@@ -1,0 +1,30 @@
+https://www.hackerrank.com/challenges/time-conversion/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+#!/bin/python3
+
+import os
+import sys
+
+
+def timeConversion(s):
+    l =list(s)
+    if l[8] == "P":
+        l[0] = str(int(l[0])+1)
+        l[1] = str(int(l[1])+2) 
+    elif l[0] == '1' and l[1] == '2' and l[8] == "A":
+        l[0] == str(0)
+        l[1] == str(0)
+    del(l[9])
+    del(l[8])
+    return(''.join(l))
+
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    f.write(result + '\n')
+
+    f.close()
