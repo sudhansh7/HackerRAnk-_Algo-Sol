@@ -1,0 +1,121 @@
+https://www.hackerrank.com/challenges/time-conversion/problem?isFullScreen=false
+
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the timeConversion function below.
+     */
+    static String timeConversion(String s) 
+    {
+        char ar[] = new char[10];
+        char b[] = new char[2];
+
+        ar = s.toCharArray(); //Converts String to Char array and Stores it to  ar.
+
+        if(ar[8] == 'P')
+        {
+            if(ar[0] != '1' && ar[1] != '2')
+            {
+                b[0]= ar[0]; 
+                b[1]= ar[1];
+
+                String st= String.valueOf(b);
+                int x= Integer.parseInt(st);
+
+                x= x+12;
+                st = String.valueOf(x);
+            
+                b= st.toCharArray();
+            
+                ar[0]= b[0];
+                ar[1]= b[1];
+        
+                ar = Arrays.copyOfRange(ar, 0,8);
+
+                s= String.valueOf(ar);
+            }
+            else if(ar[0] == '1' && ar[1] == '2')
+            {
+                ar = Arrays.copyOfRange(ar, 0, 8);
+                s= String.valueOf(ar);
+            }
+            else if (ar[0] == '0' && ar[1] == '2')
+            {
+                b[0] = ar[0];
+                b[1] = ar[1];
+
+                String st = String.valueOf(b);
+                int x = Integer.parseInt(st);
+
+                x = x + 12;
+                st = String.valueOf(x);
+
+                b = st.toCharArray();
+
+                ar[0] = b[0];
+                ar[1] = b[1];
+
+                ar = Arrays.copyOfRange(ar, 0, 8);
+
+                s = String.valueOf(ar);
+            }
+            else
+            {
+                b[0] = ar[0];
+                b[1] = ar[1];
+
+                String st = String.valueOf(b);
+                int x = Integer.parseInt(st);
+
+                x = x + 12;
+                st = String.valueOf(x);
+
+                b = st.toCharArray();
+
+                ar[0] = b[0];
+                ar[1] = b[1];
+
+                ar = Arrays.copyOfRange(ar, 0, 8);
+
+                s = String.valueOf(ar);
+
+            }
+
+        }
+
+        else if(ar[8] == 'A' && ar[0] == '1' && ar[1] == '2')
+        {
+            ar[0]= '0';
+            ar[1]= '0';
+            ar = Arrays.copyOfRange(ar, 0, 8);
+            s= String.valueOf(ar);
+        }
+        else
+        {
+            ar= Arrays.copyOfRange(ar, 0, 8);
+            s= String.valueOf(ar);
+        }
+    return s;
+    }
+
+    private static final Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scan.nextLine();
+
+        String result = timeConversion(s);
+
+        bw.write(result);
+        bw.newLine();
+
+        bw.close();
+    }
+}
