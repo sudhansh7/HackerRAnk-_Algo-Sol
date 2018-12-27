@@ -1,0 +1,61 @@
+https://www.hackerrank.com/challenges/between-two-sets/problem
+
+#!/bin/python3
+
+import os
+import sys
+from fractions import gcd
+
+#
+# Complete the getTotalX function below.
+#
+def getTotalX(a, b):
+    fact_li =[]
+    g= b[0]
+    for i in range(len(b)):
+        g = int(gcd(g,b[i])) 
+
+    print(g)
+    
+    for x in range(g):
+        if x >=1 and (g)%x == 0:
+            fact_li.append(x)
+    fact_li.append(g)
+    print(fact_li)
+    total = 0
+    
+    for c in range(len(fact_li)):
+        flag = 0
+        for d in range(len(a)):
+            if fact_li[c]%a[d] == 0:
+                flag = flag+1
+        if flag == len(a):
+            total = total +1
+    return total
+
+         
+                
+                
+            
+
+            
+    
+
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    total = getTotalX(a, b)
+
+    f.write(str(total) + '\n')
+
+    f.close()

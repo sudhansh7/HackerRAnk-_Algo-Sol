@@ -1,0 +1,45 @@
+https://www.hackerrank.com/challenges/breaking-best-and-worst-records/problem
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the breakingRecords function below.
+def breakingRecords(scores):
+    count_max = 0
+    min_scores = scores[0]
+    max_scores = scores[0]
+    count_min = 0
+    f_scores = []
+    
+    for i in range(len(scores)):
+        if scores[i] < max_scores:
+            max_scores = scores[i]
+            count_max = count_max+1
+            
+        if scores[i] > min_scores:
+            min_scores = scores[i]
+            count_min = count_min+1
+        
+    f_scores.append(count_min)
+    f_scores.append(count_max)
+    return(f_scores)
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    scores = list(map(int, input().rstrip().split()))
+
+    result = breakingRecords(scores)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
