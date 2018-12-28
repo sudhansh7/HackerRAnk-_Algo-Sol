@@ -1,0 +1,57 @@
+https://www.hackerrank.com/challenges/migratory-birds/problem
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def distinct(ar):
+    dist_list = []
+    for i in ar:
+        if i not in dist_list:
+            dist_list.append(i)
+    return(dist_list)
+# Complete the migratoryBirds function below.
+def migratoryBirds(arr, n):
+    unique = distinct(arr)
+    flag_li = []
+    for i in range(len(unique)):
+        flag = 0
+        for j in range(n):
+            if unique[i] == arr[j]:
+                flag =flag +1
+        flag_li.append(flag)
+        
+    m = max(flag_li)
+    f_li= []
+    
+    for i in unique:
+        flag = 0
+        for j in arr:
+            if i == j:
+                flag =flag +1
+        if flag == m:
+            f_li.append(i)
+    
+    return(min(f_li))
+        
+    
+                
+                
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr, arr_count)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
